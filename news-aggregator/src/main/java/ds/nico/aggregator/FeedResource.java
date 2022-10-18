@@ -21,7 +21,14 @@ public class FeedResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<FeedBean> getPage(Integer idx) {
         Integer ps = pageSize == null? pageSizeDefault : pageSize;
-        return FeedBean.findAll(Sort.by("updateDate", "date").descending()).page(Page.of(idx, ps)).list();
+        return FeedBean.findAll(Sort.by("date", "updateDate").descending()).page(Page.of(idx, ps)).list();
     }
 
+    @GET
+    @Path("/pages")
+    @Produces(MediaType.APPLICATION_JSON)
+    public double getNumberOfPagse() {
+        Integer ps = pageSize == null? pageSizeDefault : pageSize;
+        return Math.floor(FeedBean.count()/ps);
+    }
 }
