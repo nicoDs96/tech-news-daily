@@ -5,6 +5,8 @@ We can divide the project in three main parts:
 2) [The News Endpoint](/news-aggregator/): an API exposing the news ordered by latest.
 3) [The News Website](/news-html): a lightweight website showing the latest news.
 
+Read more about it [here](https://nicods96.github.io/hi/building-a-custom-news-feed/).
+
 <!--To read more about it, check the [project description]().-->
 
 ## News Blogs
