@@ -25,7 +25,6 @@ public class PollerRoute extends RouteBuilder {
         feedList.forEach(url ->{
             from("rss:" + url + "?alt=rss&splitEntries=false&delay="+refresh+"&repeatCount="+refreshLimit)
                     .process(new FeedProcessor())
-                    .log("${body}")
                     .split(body())
                     .bean(FeedBean.class, "upsert");
         });
