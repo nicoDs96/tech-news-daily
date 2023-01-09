@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IndexService } from '../index.service';
 import { environment } from 'src/environments/environment';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-paging',
@@ -9,32 +10,30 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./paging.component.css']
 })
 export class PagingComponent implements OnInit {
-  pages: number;
-  currentPage: number;
-  prevPage: number | undefined;
-  nextPage: number | undefined;
+  pageSize = 30;
+  pageIndex = 0;
+  length = 0;
 
-  constructor(private http: HttpClient, private idxService: IndexService) { 
-    this.pages = 0; 
-    this.currentPage = 0;
-    this.prevPage = undefined;
+
+  constructor(private http: HttpClient, private idxService: IndexService) {
+    this.http.get<number>(`${environment.endpoint}/feeds/pages`).subscribe(pagesNr => this.length = pagesNr*this.pageSize);
   }
 
-  ngOnInit(): void {
-    this.http.get<number>(`${environment.endpoint}/feeds/pages`).subscribe(pagesNr => this.pages = pagesNr);
-    this.idxService.idx.subscribe(value => {
-      this.currentPage = value;
-      value > 0 ? this.prevPage = value - 1 : this.prevPage = undefined;
-      value != this.pages ? this.nextPage = value + 1 : this.nextPage = undefined;
-    })
+  handlePageEvent(e: PageEvent) {
+    // this.pageEvent = e;
+    // this.length = e.length;
+    // this.pageSize = e.pageSize;
+    // this.pageIndex = e.pageIndex;
+    this.pageIndex = e.pageIndex;
+    this.idxService.goto(this.pageIndex);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+
   }
 
-  next(){
-    if(this.currentPage < this.pages) this.idxService.next();
-  }
-
-  prev(){
-    if(this.currentPage > 0) this.idxService.prev();
-  }
+  ngOnInit(): void {}
 
 }

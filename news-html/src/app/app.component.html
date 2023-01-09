@@ -1,13 +1,15 @@
-<section class="py-5 text-center container">
-  <div class="row py-lg-5">
-    <div class="col-lg-6 col-md-8 mx-auto">
-      <h1 class="fw-light">Tech News Daily</h1>
-      <p class="lead text-muted">Provided to you with &#10084; by <a href="https://nicods96.github.io/hi/">NicoDs</a>.</p>
-      <p class="lead text-muted">Read more about it on <a href="https://nicods96.github.io/hi/building-a-custom-news-feed/">My Blog</a>. Contribute to it on <a href="https://github.com/nicoDs96/tech-news-daily">GitHub</a></p>
-      <p class="text-secondary">The website uses cookies for analytics.</p>
-    </div>
-  </div>
-</section>
-<app-paging></app-paging>
+<mat-toolbar color="primary" id="toolbar">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+   <mat-icon>feed</mat-icon>
+ </button>
+ <span>Tech News Daily</span>
+ <span class="example-spacer"></span>
+ <a href="#footer" class="no-decoration"><mat-icon>info</mat-icon></a>
+</mat-toolbar>
+
 <app-list></app-list>
 <app-paging></app-paging>
+
+<footer color="primary" id="footer" class="mat-headline"> 
+  <p><a href="#toolbar" color="accent">Tech News Daily</a> is provided to you with &#10084; by <a href="https://nicods96.github.io/hi/" color="accent">NicoDs</a>.</p><p> Read more about it on <a href="https://nicods96.github.io/hi/building-a-custom-news-feed/" color="accent">My Blog</a>. Contribute to it on <a href="https://github.com/nicoDs96/tech-news-daily">GitHub</a>.</p>
+</footer>

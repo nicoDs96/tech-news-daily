@@ -1,20 +1,29 @@
-<div class="container">
-  <div class="row justify-content-center py-1" *ngFor="let feed of feedList">
-      <div class="col-sm-12 col-md-8">
-        <div class="card" (click)="goToArticle(feed.link)">
-          <div class="card-body">            
-            <h4 class="card-title">{{feed.title}}</h4>
-            <h6 class="card-subtitle mb-2 text-muted">{{feed.authors}}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">{{feed.src}}</h6>
-            <div class="justify-content-start">
-              <div  class="btn btn-outline-info" style="margin-right:0.5rem;margin-top:0.3rem" *ngFor="let c of feed.categories.split(';')"> {{c}} </div>
-            </div>
-            <div class="d-flex justify-content-between" style="margin-top: 1rem;">
-              <h6 class="card-subtitle mb-2 text-muted">Published: {{feed.date}}</h6>
-              <h6 class="card-subtitle mb-2 text-muted">Updated: {{feed.updateDate == null? '-':feed.updateDate}}</h6>
-            </div>   
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
+<p class="card-container">
+
+  <mat-progress-bar mode="indeterminate" *ngIf="this.feedList.length == 0"></mat-progress-bar>
+
+  <mat-card class="article-card" *ngFor="let feed of feedList" (click)="goToArticle(feed.link)">
+    <mat-card-header>
+      <mat-card-title>{{feed.title}}</mat-card-title>
+      <mat-card-subtitle>{{feed.authors}}</mat-card-subtitle>
+      <mat-card-subtitle>{{feed.src}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ feed.categories.replaceAll(';', ', ') }}</p>
+      <mat-divider></mat-divider>
+      <p>
+        Published: {{feed.date}}
+      </p>
+      <p>
+        Updated: {{feed.updateDate == null? '-':feed.updateDate}}
+      </p>
+    </mat-card-content>
+    <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+    <!-- <mat-card-footer>
+    </mat-card-footer> -->
+  </mat-card>
+
+</p>

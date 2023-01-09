@@ -1,17 +1,14 @@
-<div class="container text-center">
-    <div class="row justify-content-md-center py-1">
-        <div class="col-md-auto">
-            <div (click)="prev()">Prev</div>
-        </div>
-        <div class="col-md-auto">
-            <div>Page {{currentPage + 1}} of {{pages + 1}}</div>
-        </div>
-        <div class="col-md-auto">
-            <div (click)="next()">Next</div>
-        </div>
-        
-    </div>
-</div>
-    
-    
-    
+<p class="paging-container">
+    <mat-paginator #paginator
+               class="demo-paginator"
+               (page)="handlePageEvent($event)"
+               [length]="length"
+               [pageSize]="pageSize"
+               [disabled]="false"
+               [showFirstLastButtons]="true"
+               [pageSizeOptions]="[]"
+               [hidePageSize]="true"
+               [pageIndex]="pageIndex"
+               aria-label="Select page">
+    </mat-paginator>
+</p>
