@@ -1,4 +1,4 @@
-.article-cardm .article-card-placeholder {
+.article-card {
     max-width: 400px;
     margin-bottom: 15px;
   }
@@ -28,6 +28,12 @@
   ;
 }
 
+.placeholder-container {
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+}
 .article-card-placeholder{
   display: flex;
   flex-direction: column;
