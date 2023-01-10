@@ -1,24 +1,44 @@
-.article-card {
-    max-width: 400px;
+@media (max-width: 500px) {
+  .article-card {
+    max-width: 300px;
     margin-bottom: 15px;
   }
-.card-container {
-    display: grid;
-    place-items: center ;
-    margin-left: 5px;
-    margin-right: 5px; 
 }
+@media (min-width: 500px) {
+  .article-card {
+    width: 400px;
+    margin-bottom: 15px;
+  }
+}
+
+/* GENERICS */
+
+/*
+CARD PLACEHOLDER DISPLAYED WHILE LOADING ACTUAL DATA
+*/
+.article-card-placeholder{
+  opacity: .5;
+}
+.article-card-placeholder, .article-card {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: stretch;
+}
+
 .title-placeholder {
   min-height: 15px;
   min-width: 200px;
   background-color: #555;
 }
+
 .subtitle-placeholder {
   min-height: 5px;
   min-width: 250px;
   background-color: rgb(121, 121, 121);
   margin-top: 6px
 }
+
 .text-placeholder{
   min-height: 100px;
   min-width: 250;
@@ -28,20 +48,46 @@
   ;
 }
 
-.placeholder-container {
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: center;
+/*
+OTHER
+*/
+@media (min-width: 800px) {
+  .placeholder-container, .card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: stretch;
+  }
+
+  .article-card-placeholder, .article-card {
+    min-height: 200px;
+    max-width: 500px;
+    min-width: 400px;
+    margin-bottom: 15px;
+    margin-inline: 20px;
+  }
 }
-.article-card-placeholder{
-  display: flex;
-  flex-direction: column;
-  justify-content:space-evenly;
-  align-items: stretch;
-  min-height: 200px;
-  max-width: 400px;
-  min-width: 300px;
-  margin-bottom: 15px;
-  opacity: .5;
+/*
+MOBILE
+*/
+@media (max-width: 800px) {
+  .placeholder-container, .card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+  }
+  .article-card-placeholder {
+    min-height: 200px;
+    max-width: 400px;
+    min-width: 350px;
+    margin-bottom: 15px;
+  }
+  .article-card {
+    min-height: 200px;
+    max-width: 300px;
+    min-width: 200px;
+    margin-bottom: 15px;
+  }
 }
